@@ -26,7 +26,7 @@
  	let d = new Date();
 	console.log(d.getMinutes());
 	document.getElementById('cdate').innerHTML = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
-	if (d.getMinutes()  > 10)
+	if (d.getMinutes()  > 9)
 	document.getElementById('ctime').innerHTML = d.getHours() + ':' + d.getMinutes();
 	else{
 	document.getElementById('ctime').innerHTML = d.getHours() + ':0' + d.getMinutes();
@@ -48,7 +48,7 @@
 	console.log(newd.getHours() + ":" + newd.getMinutes());
 	document.getElementById('rest').innerHTML = "Бамблби явится:"
 	document.getElementById('resdate').innerHTML = newd.getDate() + "." + (newd.getMonth() + 1) + "." + newd.getFullYear();
-	if (newd.getMinutes()  > 10)
+	if (newd.getMinutes()  > 9)
 	document.getElementById('restime').innerHTML = newd.getHours() + ':' + newd.getMinutes();
 	else{
 	document.getElementById('restime').innerHTML = newd.getHours() + ':0' + newd.getMinutes();
