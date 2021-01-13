@@ -3,6 +3,7 @@
 <body onload="script()">
 <div align="center">
 <h1>Bamboocho`s time calculator</h1>
+<img src="1.png" height="100" width="100">
 <h2>Текущее время: 
 <p id="cdate"></p>
 <p id="ctime"></p>
@@ -16,9 +17,12 @@
 <h2 id="rest"></h2>
 <h2 id="resdate"></h2>
 <h2 id="restime"></h2>
+<img src="2.png" height="100" width="100" id="pic">
 <div>
 <script>
 	function script(){
+	var img = document.getElementById('pic');
+	img.style.visibility = "hidden";
  	let d = new Date();
 	console.log(d.getMinutes());
 	document.getElementById('cdate').innerHTML = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
@@ -38,6 +42,8 @@
 	var lolz = document.getElementById('lolz').value;
 	if(lolz == "") alert("Введи усатые минуты");
 	else{
+	var img = document.getElementById('pic');
+	img.style.visibility = "visible";
  	let newd = AddMinutesToDate(d, lolz * 2.7);
 	console.log(newd.getHours() + ":" + newd.getMinutes());
 	document.getElementById('rest').innerHTML = "Бамблби явится:"
