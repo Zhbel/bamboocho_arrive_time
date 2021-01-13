@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body onload="script()">
+<div align="center">
+<h1>Bamboocho`s time calculator</h1>
+<h2>Текущее время: 
+<p id="cdate"></p>
+<p id="ctime"></p>
+</h2>
+<h2>Сколько ждать Бамблбизи? (мин)</h2>
+<input type="text" size="40" id="lolz">
+<br>
+<br>
+<input type="button" onclick="timeCalc()" value="Прибытие усатого" style="height:50px;width:200px">
+<br>
+<h2 id="rest"></h2>
+<h2 id="resdate"></h2>
+<h2 id="restime"></h2>
+<div>
+<script>
+	function script(){
+ 	let d = new Date();
+	console.log(d.getMinutes());
+	document.getElementById('cdate').innerHTML = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
+	if (d.getMinutes()  > 10)
+	document.getElementById('ctime').innerHTML = d.getHours() + ':' + d.getMinutes();
+	else{
+	document.getElementById('ctime').innerHTML = d.getHours() + ':0' + d.getMinutes();
+	}
+	};
+
+	function AddMinutesToDate(date, minutes) {
+     	return new Date(date.getTime() + minutes*60000);
+	}
+	
+	function timeCalc(){
+	let d = new Date();
+	var lolz = document.getElementById('lolz').value;
+	if(lolz == "") alert("Введи усатые минуты");
+	else{
+ 	let newd = AddMinutesToDate(d, lolz * 2.7);
+	console.log(newd.getHours() + ":" + newd.getMinutes());
+	document.getElementById('rest').innerHTML = "Бамблби явится:"
+	document.getElementById('resdate').innerHTML = newd.getDate() + "." + newd.getMonth() + 1 + "." + newd.getFullYear();
+	if (newd.getMinutes()  > 10)
+	document.getElementById('restime').innerHTML = newd.getHours() + ':' + newd.getMinutes();
+	else{
+	document.getElementById('restime').innerHTML = newd.getHours() + ':0' + newd.getMinutes();
+	}
+	}
+	}
+</script>
+
+</body>
+</html>
