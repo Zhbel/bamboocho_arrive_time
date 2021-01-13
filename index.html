@@ -47,7 +47,7 @@
  	let newd = AddMinutesToDate(d, lolz * 2.7);
 	console.log(newd.getHours() + ":" + newd.getMinutes());
 	document.getElementById('rest').innerHTML = "Бамблби явится:"
-	document.getElementById('resdate').innerHTML = newd.getDate() + "." + newd.getMonth() + 1 + "." + newd.getFullYear();
+	document.getElementById('resdate').innerHTML = newd.getDate() + "." + (newd.getMonth() + 1) + "." + newd.getFullYear();
 	if (newd.getMinutes()  > 10)
 	document.getElementById('restime').innerHTML = newd.getHours() + ':' + newd.getMinutes();
 	else{
