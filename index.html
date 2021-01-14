@@ -28,7 +28,7 @@
 	(function () {
   	function updateClock(){
 	let d = new Date();
-    	document.getElementById('cdate').innerHTML = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
+    	document.getElementById('cdate').innerHTML = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear();
 	if (d.getMinutes()  > 9)
 	document.getElementById('ctime').innerHTML = d.getHours() + ':' + d.getMinutes();
 	else{
