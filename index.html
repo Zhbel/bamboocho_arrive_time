@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body background="back.png" style="background-position: right-bottom">
 <div align="center">
-<h1>Bamboocho`s time calculator</h1>
+<font color="white">
+<h1 color="white">Bamboocho`s time calculator</h1>
 <img src="https://github.com/Zhbel/bamboocho_arrive_time/blob/main/1.png?raw=true" style="height:10%;width:10%">
 <span id="clock">
 <h2>Текущее время: 
@@ -10,7 +11,7 @@
 <p id="ctime"></p>
 </h2>
 </span>
-<h2>Сколько ждать Подводного Электрика? (мин)</h2>
+<h2 style="color: navy">Сколько ждать Подводного Электрика? (мин)</h2>
 <input type="text" style="height:10%;width:20%" id="lolz">
 <br>
 <br>
@@ -23,6 +24,7 @@
 <img src="https://github.com/Zhbel/bamboocho_arrive_time/blob/main/2.png?raw=true" style="height:10%;width:10%" id="pic">
 <div>
 <p id="title2">До прихода адмирала в бухту осталось: <span id="t" style="font-size:20px"></span></p>
+<font>
 </div>
 </body>
 </html>
@@ -30,7 +32,7 @@
 <script>
 	(function () {
   	function updateClock(){
-	let d = new Date();
+	var d = new Date();
     	document.getElementById('cdate').innerHTML = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear();
 	if (d.getMinutes()  > 9)
 	document.getElementById('ctime').innerHTML = d.getHours() + ':' + d.getMinutes();
@@ -53,16 +55,16 @@
 	}
 	
 	function timeCalc(){
-	let d = new Date();
+	var d = new Date();
 	var lolz = document.getElementById('lolz').value;
 	if(lolz == "") alert("Введи минуты ожидания");
 	else{
 	
 	var img = document.getElementById('result');
+ 	var newd = AddMinutesToDate(d, lolz * 2.63);
 	img.style = "display:block";
- 	let newd = AddMinutesToDate(d, lolz * 2.63);
 	time(newd);
-	//console.log(newd.getHours() + ":" + newd.getMinutes());
+	check = true;
 	document.getElementById('rest').innerHTML = "Бамблби явится:"
 	document.getElementById('resdate').innerHTML = newd.getDate() + "." + (newd.getMonth() + 1) + "." + newd.getFullYear();
 	if (newd.getMinutes()  > 9)
@@ -79,7 +81,11 @@
 	tsec=today%60; today=Math.floor(today/60); if(tsec<10)tsec='0'+tsec;
 	tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
 	thour=today%24; today=Math.floor(today/24);
-	timestr=today +" дней "+ thour+" часов "+tmin+" минут "+tsec+" секунд";
+	timestr=today + " дней " + thour + " часов " + tmin + " минут " + tsec + " секунд";
+	if(today == 0 && thour == 0 && tmin == 0 && tsec == 0){
+	alert('Усатый, сука, уже должен быть здесь!');
+	location.reload();
+	}
 	document.getElementById('t').innerHTML=timestr;
 	setInterval(function () {
   	time(timeend);
