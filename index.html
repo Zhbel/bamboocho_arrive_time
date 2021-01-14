@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body onload="script()">
+<body>
 <div align="center">
 <h1>Bamboocho`s time calculator</h1>
 <img src="https://github.com/Zhbel/bamboocho_arrive_time/blob/main/1.png?raw=true" style="height:10%;width:10%">
@@ -16,11 +16,14 @@
 <br>
 <input type="button" onclick="timeCalc()" value="Прибытие усатого" style="height:10%;width:20%">
 <br>
+<div id="result" style = "display:none">
 <h2 id="rest"></h2>
 <h2 id="resdate"></h2>
 <h2 id="restime"></h2>
 <img src="https://github.com/Zhbel/bamboocho_arrive_time/blob/main/2.png?raw=true" style="height:10%;width:10%" id="pic">
 <div>
+<p id="title2">До прихода адмирала в бухту осталось: <span id="t" style="font-size:20px"></span></p>
+</div>
 </body>
 </html>
 
@@ -40,10 +43,10 @@
   	}, 1000);
 	}());
 
-	function script(){
+	/* function script(){
 	var img = document.getElementById('pic');
 	img.style.visibility = "hidden";
-	};
+	}; */
 
 	function AddMinutesToDate(date, minutes) {
      	return new Date(date.getTime() + minutes*60000);
@@ -54,10 +57,12 @@
 	var lolz = document.getElementById('lolz').value;
 	if(lolz == "") alert("Введи минуты ожидания");
 	else{
-	var img = document.getElementById('pic');
-	img.style.visibility = "visible";
+	
+	var img = document.getElementById('result');
+	img.style = "display:block";
  	let newd = AddMinutesToDate(d, lolz * 2.63);
-	console.log(newd.getHours() + ":" + newd.getMinutes());
+	time(newd);
+	//console.log(newd.getHours() + ":" + newd.getMinutes());
 	document.getElementById('rest').innerHTML = "Бамблби явится:"
 	document.getElementById('resdate').innerHTML = newd.getDate() + "." + (newd.getMonth() + 1) + "." + newd.getFullYear();
 	if (newd.getMinutes()  > 9)
@@ -67,4 +72,18 @@
 	}
 	}
 	}
+
+	function time(timeend) {
+	today = new Date();
+	today = Math.floor((timeend-today)/1000);
+	tsec=today%60; today=Math.floor(today/60); if(tsec<10)tsec='0'+tsec;
+	tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
+	thour=today%24; today=Math.floor(today/24);
+	timestr=today +" дней "+ thour+" часов "+tmin+" минут "+tsec+" секунд";
+	document.getElementById('t').innerHTML=timestr;
+	setInterval(function () {
+  	time(timeend);
+  	}, 1000);
+	}
 </script>
+
